@@ -6,80 +6,53 @@ import { useEffect } from "react";
 const { Header, Content, Footer } = Layout;
 
 
-const SobakaInfoCard = ({sobakaInfo}) => {
+const SobakaInfoCard = ({ id }) => {
   //react i js polnoe govno
-  // const params = useParams(info);
-  // const breedId = params.sobakaId;
-  // const [sobakaInfo, setData] = useState();
-  // const [sobakaImg, setImg] = useState();
-  // const [loading, setLoading] = useState(true);
-  // const [error, setError] = useState(null);
-
-  // useEffect(() => {
-  //   const getData = async () => {
-  //     try {
-  //       const requestOptions = {
-  //         method: 'GET',
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //           'x-api-key': 'live_YYu7aVxIwkuT6zzYPiZhDbgca61a32FEKYnlRn1zPpaX1KFt4pJdOPjFj4ptlBIZ'
-  //         },
-  //       };
-
-  //       fetch(`https://api.thedogapi.com/v1/breeds/${breedId}`, requestOptions)
-  //       .then(response => response.json())
-  //       .then(data => setData(data));
-
-  //       // const responseBreed = await fetch(
-  //       //   `https://api.thedogapi.com/v1/breeds/${breedId}`, requestOptions
-  //       // );
-  //       // if (!responseBreed.ok) {
-  //       //   throw new Error(
-  //       //     `This is an HTTP error: The status is ${responseBreed.status}`
-  //       //   );
-  //       // }
-  //       // let actualData = await responseBreed.json();
-  //       // setData(actualData);
-  //       const imgId = sobakaInfo.reference_image_id;
-
-  //       fetch(`https://api.thedogapi.com/v1/images/${imgId}`, requestOptions)
-  //       .then(response => response.json())
-  //       .then(data => setImg(data));
-  //       // const responseImg = await fetch(
-  //       //   `https://api.thedogapi.com/v1/images/${imgId}`, requestOptions
-  //       // );
-  //       // if (!responseImg.ok) {
-  //       //   throw new Error(
-  //       //     `This is an HTTP error: The status is ${responseImg.status}`
-  //       //   );
-  //       // }
-  //       // let actualImg = await responseImg.json();
-  //       // setImg(actualImg);
-
-  //       setError(null);
-  //     } catch (err) {
-  //       setError(err.message);
-  //       setData(null);
-  //       setImg(null);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   }
-  //   getData()
-  // }, [])
 
   const {
     token: { colorBgContainer },
   } = theme.useToken();
 
+  const [data, setData] = useState();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await fetch(
+          `https://localhost:7091/dog/${id}`
+        );
+        if (!response.ok) {
+          throw new Error(
+            `This is an HTTP error: The status is ${response.status}`
+          );
+        }
+        let actualData = await response.json();
+        setData(actualData);
+        setError(null);
+      } catch (err) {
+        setError(err.message);
+        console.log(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    getData()
+  }, [])
+
   return (
     <>
-      <div class="img-holder">
+      {loading && <div>A moment please...</div>}
+      {error && (
+        <div>{`There is a problem fetching the post data - ${error}`}</div>
+      )}
+      <div className="img-holder">
         <Image
           style={{ verticalAlign: 'middle', }}
-          width={sobakaInfo.image.width}
-          height={sobakaInfo.image.height}
-          src={sobakaInfo.image.url}
+          width={data?.image.width}
+          height={data?.image.height}
+          src={data?.image.url}
         />
       </div>
       <Layout className="site-layout">
@@ -100,7 +73,7 @@ const SobakaInfoCard = ({sobakaInfo}) => {
             }}
           >
             <Breadcrumb.Item>Sobaka</Breadcrumb.Item>
-            <Breadcrumb.Item>{sobakaInfo.name}</Breadcrumb.Item>
+            <Breadcrumb.Item>{data?.name}</Breadcrumb.Item>
           </Breadcrumb>
           <div
             style={{
@@ -109,22 +82,16 @@ const SobakaInfoCard = ({sobakaInfo}) => {
               background: colorBgContainer,
             }}
           >
-            <p>
-              Weight:
-              Imperial: {sobakaInfo.weight.imperial}
-              Metric: {sobakaInfo.weight.metric}
-            </p>
-            <p>
-              Height:
-              Imperial: {sobakaInfo.height.imperial}
-              Metric: {sobakaInfo.height.metric}
-            </p>
-            <p>
-              Life span: {sobakaInfo.life_span}
-            </p>
-            <p>
-              Temperament: {sobakaInfo.temperament}
-            </p>
+            <h5>Weight:</h5>
+            <p>Imperial: {data?.weight.imperialMinWeight} - {data?.weight.imperialMaxWeight}</p>
+            <p>Metric: {data?.weight.metricMinWeight} - {data?.weight.metricMaxWeight}</p>
+            <h5>Height:</h5>
+            <p>Imperial: {data?.height.imperialMinHeight} - {data?.height.imperialMaxHeight}</p>
+            <p>Metric: {data?.height.metricMinHeight} - {data?.height.metricMaxHeight}</p>
+            <h5>Life span:</h5>
+            <p>{data?.age.minAge} - {data?.age.maxAge} years</p>
+            <h5>Temperament: </h5>
+            <p>{data?.description.temperament}</p>
           </div>
         </Content>
         <Footer

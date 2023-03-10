@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "jb1XjMfUyYBy4Ju/QuXDRxTI0mnc1NUxtFO9RVeAoEM=",
+  "Source": "SobakaBackend",
+  "BasePath": "_content/SobakaBackend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

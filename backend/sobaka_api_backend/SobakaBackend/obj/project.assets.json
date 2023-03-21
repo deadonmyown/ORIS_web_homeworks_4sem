@@ -466,11 +466,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\xPr1e\\RiderProjects\\SobakaBackend\\SobakaBackend\\SobakaBackend.csproj",
+      "projectUniqueName": "C:\\Repositories\\ORIS_repo\\ORIS_web_homeworks_4sem\\backend\\sobaka_api_backend\\SobakaBackend\\SobakaBackend.csproj",
       "projectName": "SobakaBackend",
-      "projectPath": "C:\\Users\\xPr1e\\RiderProjects\\SobakaBackend\\SobakaBackend\\SobakaBackend.csproj",
+      "projectPath": "C:\\Repositories\\ORIS_repo\\ORIS_web_homeworks_4sem\\backend\\sobaka_api_backend\\SobakaBackend\\SobakaBackend.csproj",
       "packagesPath": "C:\\Users\\xPr1e\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\xPr1e\\RiderProjects\\SobakaBackend\\SobakaBackend\\obj\\",
+      "outputPath": "C:\\Repositories\\ORIS_repo\\ORIS_web_homeworks_4sem\\backend\\sobaka_api_backend\\SobakaBackend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

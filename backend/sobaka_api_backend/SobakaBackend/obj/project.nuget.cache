@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ziNp6h06U0mrOfN8wL8L9dWq7GX8Rkh7elkKTxEbXX5bIW157EzFCIy+j1RJhXCNMNQeM7Peq3CKCfmaXHWFDw==",
+  "dgSpecHash": "Lgp5V2Q5485Ambq+PnbG+KeLwdJDjDKGpTdPUvfF2ae3F3hGjB0H0vFXp2SFO0Tvp2ANohWxKSqcCTudus/5ZA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\xPr1e\\RiderProjects\\SobakaBackend\\SobakaBackend\\SobakaBackend.csproj",
+  "projectFilePath": "C:\\Repositories\\ORIS_repo\\ORIS_web_homeworks_4sem\\backend\\sobaka_api_backend\\SobakaBackend\\SobakaBackend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\xPr1e\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.1\\microsoft.aspnetcore.openapi.7.0.1.nupkg.sha512",
     "C:\\Users\\xPr1e\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
